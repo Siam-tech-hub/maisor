@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     price: 1500,
     category: "panjabi",
     image: "/images/panjabi-1-1.jpg",
-    images: ["/images/panjabi-1-1.jpg", "/images/panjabi-1-2.jpg"],
+    images: ["/images/panjabi-1-1.jpg", "/images/panjabi-1-2.jpg", "/images/panjabi-1-3.jpg"],
     description:
       "Elegant designer panjabi crafted with premium fabric. A refined look perfect for festive and special occasions.",
     details: [
@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
     price: 1400,
     category: "panjabi",
     image: "/images/panjabi-4-1.jpg",
-    images: ["/images/panjabi-4-1.jpg", "/images/panjabi-4-2.jpg"],
+    images: ["/images/panjabi-4-1.jpg", "/images/panjabi-4-2.jpg", "/images/panjabi-4-3.jpg"],
     description:
       "A modern stylish panjabi with a contemporary cut. Stand out with a sleek, fashionable look.",
     details: [

@@ -14,7 +14,7 @@ export default function Home() {
       <section className="relative">
         <div className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-bottle-950">
                 <Image
-                  src="/images/panjabi-1-1.jpg"
+                  src="/images/hero-panjabi.jpg"
                   alt="Maisor collection"
                   fill
                   priority
