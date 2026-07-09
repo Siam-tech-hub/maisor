@@ -8,11 +8,16 @@ import Link from "next/link";
 // 👇 Orders are sent to this WhatsApp number (country code, no +, no spaces)
 const WHATSAPP_NUMBER = "8801337303324";
 
+// 👇 Web3Forms access key — order emails go to siamhossai5599@gmail.com
+//    Get it at https://web3forms.com (enter your email, key arrives by email)
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 const CITIES = ["Dhaka", "Outside Dhaka"];
 
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
   const [placed, setPlaced] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -31,8 +36,11 @@ export default function CheckoutPage() {
     subtotal >= 3000 ? 0 : form.city === "Dhaka" ? 60 : 130;
   const total = subtotal + shipping;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setSending(true);
+
+    const orderId = "MAI-" + Date.now().toString().slice(-6);
 
     const lines = items
       .map(
@@ -43,8 +51,48 @@ export default function CheckoutPage() {
       )
       .join("\n");
 
+    // ---- Email notification via Web3Forms ----
+    const emailBody = items
+      .map(
+        (i) =>
+          `${i.name} — Size ${i.size} — Qty ${i.qty} — ${formatPrice(
+            i.price * i.qty
+          )}`
+      )
+      .join("\n");
+
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `🛍️ New Maison Order ${orderId} — ${formatPrice(total)}`,
+          from_name: "Maison Store",
+          name: form.name,
+          phone: form.phone,
+          address: form.address,
+          area: form.city,
+          payment: form.payment,
+          note: form.note || "—",
+          order_id: orderId,
+          order_items: emailBody,
+          subtotal: formatPrice(subtotal),
+          delivery: shipping === 0 ? "FREE" : formatPrice(shipping),
+          total: formatPrice(total),
+        }),
+      });
+    } catch (err) {
+      // Email failed — order still goes through via WhatsApp
+      console.error("Email send failed", err);
+    }
+
+    // ---- WhatsApp notification ----
     const message =
-      `*New Maisor Order*\n\n` +
+      `*New Maison Order ${orderId}*\n\n` +
       `${lines}\n\n` +
       `Subtotal: ${formatPrice(subtotal)}\n` +
       `Delivery: ${shipping === 0 ? "FREE" : formatPrice(shipping)}\n` +
@@ -61,6 +109,8 @@ export default function CheckoutPage() {
       message
     )}`;
     window.open(url, "_blank");
+
+    setSending(false);
     setPlaced(true);
     clear();
   }
@@ -74,9 +124,9 @@ export default function CheckoutPage() {
         </div>
         <h1 className="mt-6 text-3xl font-bold">Order placed!</h1>
         <p className="mt-4 leading-relaxed text-ink/60">
-          We've opened WhatsApp with your order details. If it didn't open
-          automatically, just send us a message and we'll confirm your order
-          right away.
+          We&apos;ve received your order and sent the details to our team via
+          email. WhatsApp also opened with your order — if it didn&apos;t, no
+          worries, we&apos;ll confirm with you shortly.
         </p>
         <Link
           href="/shop"
@@ -94,7 +144,7 @@ export default function CheckoutPage() {
       <div className="mx-auto max-w-xl px-4 py-24 text-center sm:px-6">
         <h1 className="text-3xl font-bold">Your cart is empty</h1>
         <p className="mt-4 text-ink/60">
-          Add a few pieces and they'll show up here.
+          Add a few pieces and they&apos;ll show up here.
         </p>
         <Link
           href="/shop"
@@ -180,8 +230,8 @@ export default function CheckoutPage() {
             </div>
             {form.payment !== "COD" && (
               <p className="mt-3 rounded-lg bg-bottle-50 px-4 py-3 text-xs text-bottle-800">
-                You selected <strong>{form.payment}</strong>. We'll share payment
-                instructions via WhatsApp after you place the order.
+                You selected <strong>{form.payment}</strong>. We&apos;ll share
+                payment instructions via WhatsApp after you place the order.
               </p>
             )}
 
@@ -201,9 +251,10 @@ export default function CheckoutPage() {
 
           <button
             type="submit"
-            className="mt-6 w-full rounded-full bg-bottle-900 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-bottle-700"
+            disabled={sending}
+            className="mt-6 w-full rounded-full bg-bottle-900 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-bottle-700 disabled:opacity-60"
           >
-            Place Order — {formatPrice(total)}
+            {sending ? "Placing Order…" : `Place Order — ${formatPrice(total)}`}
           </button>
         </form>
 
