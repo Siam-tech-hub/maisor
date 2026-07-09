@@ -6,7 +6,7 @@ import { Product, formatPrice } from "@/lib/products";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/product/${product.slug}`} className="group block">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-white">
+      <div className="relative aspect-square overflow-hidden bg-white ring-1 ring-black/5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
@@ -18,8 +18,8 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.badge}
           </span>
         )}
-        <div className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="block rounded-full bg-white/95 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-ink">
+        <div className="absolute inset-0 flex items-end justify-center bg-black/0 p-3 transition-all duration-300 group-hover:bg-black/10">
+          <span className="w-full translate-y-3 bg-white/95 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-ink opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
             View Product
           </span>
         </div>

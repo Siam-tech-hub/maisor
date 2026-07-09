@@ -20,7 +20,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+            <div className="relative aspect-square overflow-hidden bg-white ring-1 ring-black/5">
                 <Image
                   src="/images/panjabi-3-1.jpg"
                   alt="Maisor craftsmanship"

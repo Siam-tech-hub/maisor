@@ -37,8 +37,8 @@ export default async function ProductPage({
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Gallery */}
         <Reveal>
-          <div className="overflow-hidden rounded-2xl bg-white">
-            <div className="relative aspect-[4/5]">
+          <div className="overflow-hidden bg-white ring-1 ring-black/5">
+            <div className="relative aspect-square">
               <Image
                 src={product.image}
                 alt={product.name}

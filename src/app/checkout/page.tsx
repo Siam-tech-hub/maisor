@@ -352,7 +352,7 @@ export default function CheckoutPage() {
                   key={`${i.id}-${i.size}`}
                   className="flex gap-3 border-b border-black/5 pb-4"
                 >
-                  <div className="h-16 w-14 shrink-0 overflow-hidden rounded-lg bg-cream">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden bg-white ring-1 ring-black/5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={i.image}
