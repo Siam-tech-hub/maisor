@@ -6,7 +6,7 @@ import { Product, formatPrice } from "@/lib/products";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/product/${product.slug}`} className="group block">
-      <div className="relative aspect-square overflow-hidden bg-white p-3 ring-1 ring-black/5">
+      <div className="relative aspect-[3/4] overflow-hidden bg-white ring-1 ring-black/5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}

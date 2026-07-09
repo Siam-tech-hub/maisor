@@ -38,7 +38,7 @@ export default async function ProductPage({
         {/* Gallery */}
         <Reveal>
           <div className="overflow-hidden bg-white ring-1 ring-black/5">
-            <div className="relative aspect-square p-6">
+            <div className="relative aspect-[3/4]">
               <Image
                 src={product.image}
                 alt={product.name}

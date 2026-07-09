@@ -11,23 +11,23 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative bg-cream">
-        <div className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden py-12 sm:py-16">
-          <div className="relative h-[60vh] max-h-[640px] w-full max-w-[480px]">
+      <section className="bg-cream">
+        <div className="mx-auto max-w-2xl px-4 py-8 sm:py-10">
+          <div className="relative aspect-[3/4] w-full overflow-hidden bg-white ring-1 ring-black/5">
             <Image
               src="/images/hero-main.jpg"
               alt="Maisor collection"
               fill
               priority
-              sizes="(max-width: 480px) 100vw, 480px"
+              sizes="(max-width: 672px) 100vw, 672px"
               className="object-contain"
             />
           </div>
-          <div className="mt-8 px-4 text-center sm:mt-10">
+          <div className="mt-6 text-center">
             <h1 className="text-2xl font-bold uppercase tracking-[0.3em] text-ink sm:text-3xl">
               New Collection
             </h1>
-            <p className="mt-3 text-base uppercase tracking-[0.4em] text-bottle-500 sm:text-lg">
+            <p className="mt-2 text-base uppercase tracking-[0.4em] text-bottle-500 sm:text-lg">
               Coming Soon
             </p>
           </div>
@@ -114,13 +114,13 @@ export default function Home() {
         <Reveal>
           <div className="overflow-hidden rounded-3xl bg-bottle-50">
             <div className="grid items-center gap-0 md:grid-cols-2">
-              <div className="relative aspect-square bg-white p-6 md:aspect-auto md:h-full md:min-h-[440px]">
+              <div className="relative aspect-[3/4] bg-white md:aspect-auto md:h-full md:min-h-[440px]">
                 <Image
                   src="/images/panjabi-2-1.jpg"
                   alt="Premium Panjabi"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain p-6"
+                  className="object-contain"
                 />
               </div>
               <div className="p-10 sm:p-14">
