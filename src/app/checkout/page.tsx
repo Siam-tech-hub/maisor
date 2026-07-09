@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = "8801337303324";
 
 // 👇 Web3Forms access key — order emails go to siamhossai5599@gmail.com
 //    Get it at https://web3forms.com (enter your email, key arrives by email)
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "67b975da-a7b9-40b8-b643-94b59e2002c2";
 
 const CITIES = ["Dhaka", "Outside Dhaka"];
 
