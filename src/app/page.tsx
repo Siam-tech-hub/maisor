@@ -55,45 +55,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BRAND FEATURE IMAGE */}
-      <section className="border-b border-black/5">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-bottle-900">
-              <div className="grid items-center md:grid-cols-2">
-                <div className="relative aspect-square md:aspect-auto md:min-h-[460px]">
-                  <Image
-                    src="/images/maisor-feature.jpg"
-                    alt="Maisor"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-10 sm:p-14 text-white">
-                  <p className="text-xs uppercase tracking-[0.35em] text-bottle-300">
-                    The Maisor Edit
-                  </p>
-                  <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-                    Wear the<br />moment.
-                  </h2>
-                  <p className="mt-5 max-w-md leading-relaxed text-white/70">
-                    Designed in our signature matte bottle green — premium
-                    panjabis made for elegance and comfort.
-                  </p>
-                  <Link
-                    href="/shop"
-                    className="mt-8 inline-block rounded-full bg-white px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-bottle-300"
-                  >
-                    Explore Collection
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* FEATURED PRODUCTS */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <Reveal>
