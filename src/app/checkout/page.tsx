@@ -5,8 +5,8 @@ import { useCart } from "@/components/CartProvider";
 import { formatPrice } from "@/lib/products";
 import Link from "next/link";
 
-// 👇 Replace with your WhatsApp number (country code, no +, no spaces)
-const WHATSAPP_NUMBER = "8801XXXXXXXXX";
+// 👇 Orders are sent to this WhatsApp number (country code, no +, no spaces)
+const WHATSAPP_NUMBER = "8801337303324";
 
 const CITIES = ["Dhaka", "Outside Dhaka"];
 

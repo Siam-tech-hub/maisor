@@ -1,9 +1,8 @@
 import Link from "next/link";
 
 const socials = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "TikTok", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/maisor_official" },
+  { label: "Facebook", href: "https://www.facebook.com/share/1HZmCaEBZk/" },
 ];
 
 export default function Footer() {

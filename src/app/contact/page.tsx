@@ -59,13 +59,18 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-8 flex gap-3">
-                {["Instagram", "Facebook", "TikTok"].map((s) => (
+                {[
+                  { label: "Instagram", href: "https://www.instagram.com/maisor_official" },
+                  { label: "Facebook", href: "https://www.facebook.com/share/1HZmCaEBZk/" },
+                ].map((s) => (
                   <a
-                    key={s}
-                    href="#"
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="rounded-full border border-black/15 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-ink/70 hover:border-bottle-500 hover:text-bottle-700"
                   >
-                    {s}
+                    {s.label}
                   </a>
                 ))}
               </div>
