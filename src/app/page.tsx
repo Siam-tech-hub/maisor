@@ -11,46 +11,25 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative">
-        <div className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-bottle-950">
-                <Image
-                  src="/images/hero-panjabi.jpg"
-                  alt="Maisor collection"
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover object-center"
-                />
-          <div className="absolute inset-0 bg-gradient-to-r from-bottle-950/85 via-bottle-950/40 to-transparent" />
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-            <div className="max-w-xl">
-              <p className="text-xs uppercase tracking-[0.35em] text-bottle-200">
-                Festive Collection · 2026
-              </p>
-              <h1 className="mt-4 text-4xl font-bold leading-[1.05] text-white sm:text-6xl">
-                Premium Panjabis,
-                <br />
-                <span className="text-bottle-300">redefined.</span>
-              </h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-white/70">
-                Designer & classic panjabis crafted with premium fabric.
-                Elegant, comfortable, and perfect for every occasion.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/shop"
-                  className="rounded-full bg-white px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-bottle-300"
-                >
-                  Shop Collection
-                </Link>
-                <Link
-                  href="/about"
-                  className="rounded-full border border-white/40 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10"
-                >
-                  Our Story
-                </Link>
-              </div>
-            </div>
+      <section className="relative bg-cream">
+        <div className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden py-12 sm:py-16">
+          <div className="relative h-[60vh] max-h-[640px] w-full max-w-[480px]">
+            <Image
+              src="/images/hero-main.jpg"
+              alt="Maisor collection"
+              fill
+              priority
+              sizes="(max-width: 480px) 100vw, 480px"
+              className="object-contain"
+            />
+          </div>
+          <div className="mt-8 px-4 text-center sm:mt-10">
+            <h1 className="text-2xl font-bold uppercase tracking-[0.3em] text-ink sm:text-3xl">
+              New Collection
+            </h1>
+            <p className="mt-3 text-base uppercase tracking-[0.4em] text-bottle-500 sm:text-lg">
+              Coming Soon
+            </p>
           </div>
         </div>
       </section>
