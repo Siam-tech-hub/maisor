@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/maisor_official" },
@@ -14,13 +13,11 @@ export default function Footer() {
         <div className="md:col-span-2">
           {/* Logo */}
           <div className="inline-flex items-center rounded-2xl bg-white p-3">
-            <Image
-              src="/images/logo.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.jpg"
               alt="Maisor"
-              width={56}
-              height={120}
-              className="h-28 w-auto object-contain"
-              priority
+              className="h-24 w-auto object-contain"
             />
           </div>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
