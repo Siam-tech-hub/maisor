@@ -1,4 +1,4 @@
-# Maison — Modern Clothing Brand
+# Maisor — Modern Clothing Brand
 
 A modern e-commerce storefront for **Maison**, built with Next.js 16, React 19, and Tailwind CSS v4. Brand palette: bottle green, white & black.
 
