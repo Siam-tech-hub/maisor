@@ -6,15 +6,25 @@ import { formatPrice } from "@/lib/products";
 import Link from "next/link";
 
 // 👇 Web3Forms access key — order emails go to siamhossai5599@gmail.com
-//    Get it at https://web3forms.com (enter your email, key arrives by email)
 const WEB3FORMS_ACCESS_KEY = "67b975da-a7b9-40b8-b643-94b59e2002c2";
 
+// 👇 Payment numbers (bKash & Nagad)
+const BKASH_NUMBER = "01337303324";
+const NAGAD_NUMBER = "01337303324";
+
 const CITIES = ["Dhaka", "Outside Dhaka"];
+
+// 👇 Bangladesh mobile number validation: 01 followed by 3-9, then 8 digits = 11 digits
+function isBangladeshPhone(phone: string): boolean {
+  const cleaned = phone.replace(/[\s-]/g, "");
+  return /^01[3-9]\d{8}$/.test(cleaned);
+}
 
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
   const [placed, setPlaced] = useState(false);
   const [sending, setSending] = useState(false);
+  const [errors, setErrors] = useState<{ phone?: string; txn?: string }>({});
 
   const [form, setForm] = useState({
     name: "",
@@ -22,19 +32,44 @@ export default function CheckoutPage() {
     address: "",
     city: "Dhaka",
     payment: "COD",
+    txn: "", // transaction ID for bKash/Nagad
     note: "",
   });
 
   function set<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((f) => ({ ...f, [key]: value }));
+    // Clear error when user edits
+    if (key === "phone") {
+      setErrors((e) => ({ ...e, phone: undefined }));
+    }
+    if (key === "txn") {
+      setErrors((e) => ({ ...e, txn: undefined }));
+    }
   }
 
-  const shipping =
-    subtotal >= 3000 ? 0 : form.city === "Dhaka" ? 60 : 130;
+  const shipping = subtotal >= 3000 ? 0 : form.city === "Dhaka" ? 60 : 130;
   const total = subtotal + shipping;
+
+  const needsPayment = form.payment === "bKash" || form.payment === "Nagad";
+  const paymentNumber = form.payment === "bKash" ? BKASH_NUMBER : NAGAD_NUMBER;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // ---- Validate phone number ----
+    const newErrors: { phone?: string; txn?: string } = {};
+    if (!isBangladeshPhone(form.phone)) {
+      newErrors.phone = "Please enter a valid Bangladesh mobile number (11 digits, starting with 01)";
+    }
+    // ---- Validate transaction ID for bKash/Nagad ----
+    if (needsPayment && !form.txn.trim()) {
+      newErrors.txn = "Please enter your payment Transaction ID after sending money";
+    }
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     setSending(true);
 
     const orderId = "MAI-" + Date.now().toString().slice(-6);
@@ -66,6 +101,8 @@ export default function CheckoutPage() {
           address: form.address,
           area: form.city,
           payment: form.payment,
+          payment_number: needsPayment ? paymentNumber : "—",
+          transaction_id: needsPayment ? form.txn : "—",
           note: form.note || "—",
           order_id: orderId,
           order_items: emailBody,
@@ -139,13 +176,29 @@ export default function CheckoutPage() {
                 onChange={(v) => set("name", v)}
                 placeholder="Your name"
               />
-              <Field
-                label="Phone number"
-                type="tel"
-                value={form.phone}
-                onChange={(v) => set("phone", v)}
-                placeholder="01XXXXXXXXX"
-              />
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/60">
+                  Phone number
+                </label>
+                <input
+                  required
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => set("phone", e.target.value)}
+                  placeholder="01XXXXXXXXX"
+                  maxLength={11}
+                  className={`mt-2 w-full rounded-xl border bg-cream px-4 py-3 text-sm outline-none focus:border-bottle-500 ${
+                    errors.phone ? "border-red-500" : "border-black/15"
+                  }`}
+                />
+                {errors.phone ? (
+                  <p className="mt-1.5 text-xs text-red-600">{errors.phone}</p>
+                ) : (
+                  <p className="mt-1.5 text-xs text-ink/40">
+                    Must be a valid Bangladesh number (starts with 01, 11 digits)
+                  </p>
+                )}
+              </div>
             </div>
             <div className="mt-4">
               <Field
@@ -195,11 +248,75 @@ export default function CheckoutPage() {
                 </button>
               ))}
             </div>
-            {form.payment !== "COD" && (
-              <p className="mt-3 rounded-lg bg-bottle-50 px-4 py-3 text-xs text-bottle-800">
-                You selected <strong>{form.payment}</strong>. We&apos;ll send
-                you the payment instructions after you place the order.
-              </p>
+
+            {/* bKash / Nagad payment instructions */}
+            {needsPayment && (
+              <div className="mt-4 rounded-2xl border border-bottle-300 bg-bottle-50 p-5">
+                <h3 className="text-sm font-bold text-bottle-900">
+                  How to pay with {form.payment}
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-bottle-800">
+                  Send <strong>{formatPrice(total)}</strong> to this{" "}
+                  {form.payment} number:
+                </p>
+
+                {/* The number - easy to copy */}
+                <div className="mt-3 flex items-center justify-between rounded-xl bg-white px-4 py-3">
+                  <span className="text-lg font-bold tracking-wider text-bottle-900">
+                    {paymentNumber}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard
+                        ?.writeText(paymentNumber)
+                        .catch(() => {});
+                    }}
+                    className="rounded-lg bg-bottle-900 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white hover:bg-bottle-700"
+                  >
+                    Copy
+                  </button>
+                </div>
+
+                <ol className="mt-4 space-y-2 text-xs leading-relaxed text-bottle-800">
+                  <li>
+                    <strong>1.</strong> Dial{" "}
+                    <strong>{form.payment === "bKash" ? "*247#" : "*167#"}</strong>{" "}
+                    or open your {form.payment} app
+                  </li>
+                  <li>
+                    <strong>2.</strong> Select{" "}
+                    <strong>Send Money</strong>
+                  </li>
+                  <li>
+                    <strong>3.</strong> Enter the number above &amp; amount{" "}
+                    <strong>{formatPrice(total)}</strong>
+                  </li>
+                  <li>
+                    <strong>4.</strong> Complete the payment &amp; copy your{" "}
+                    <strong>Transaction ID</strong>
+                  </li>
+                  <li>
+                    <strong>5.</strong> Paste the Transaction ID below &amp; place
+                    your order
+                  </li>
+                </ol>
+              </div>
+            )}
+
+            {/* Transaction ID field (only for bKash/Nagad) */}
+            {needsPayment && (
+              <div className="mt-4">
+                <Field
+                  label={`${form.payment} Transaction ID`}
+                  value={form.txn}
+                  onChange={(v) => set("txn", v)}
+                  placeholder="e.g. 9X4ABCD12E"
+                />
+                {errors.txn && (
+                  <p className="mt-1.5 text-xs text-red-600">{errors.txn}</p>
+                )}
+              </div>
             )}
 
             <div className="mt-4">
