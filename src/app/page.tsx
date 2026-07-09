@@ -135,13 +135,13 @@ export default function Home() {
         <Reveal>
           <div className="overflow-hidden rounded-3xl bg-bottle-50">
             <div className="grid items-center gap-0 md:grid-cols-2">
-              <div className="relative aspect-square md:aspect-auto md:h-full md:min-h-[440px]">
+              <div className="relative aspect-square bg-white p-6 md:aspect-auto md:h-full md:min-h-[440px]">
                 <Image
                   src="/images/panjabi-2-1.jpg"
                   alt="Premium Panjabi"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain p-6"
                 />
               </div>
               <div className="p-10 sm:p-14">

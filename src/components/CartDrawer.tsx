@@ -57,7 +57,7 @@ export default function CartDrawer() {
                   key={`${item.id}-${item.size}`}
                   className="flex gap-4 border-b border-black/5 py-4"
                 >
-                  <div className="h-20 w-20 shrink-0 overflow-hidden bg-white ring-1 ring-black/5">
+                  <div className="h-20 w-20 shrink-0 overflow-hidden bg-white p-1.5 ring-1 ring-black/5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.image}

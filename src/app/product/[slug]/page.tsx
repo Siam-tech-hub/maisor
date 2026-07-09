@@ -38,13 +38,13 @@ export default async function ProductPage({
         {/* Gallery */}
         <Reveal>
           <div className="overflow-hidden bg-white ring-1 ring-black/5">
-            <div className="relative aspect-square">
+            <div className="relative aspect-square p-6">
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain"
                 priority
               />
               {product.badge && (

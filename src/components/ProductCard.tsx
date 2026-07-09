@@ -6,12 +6,12 @@ import { Product, formatPrice } from "@/lib/products";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/product/${product.slug}`} className="group block">
-      <div className="relative aspect-square overflow-hidden bg-white ring-1 ring-black/5">
+      <div className="relative aspect-square overflow-hidden bg-white p-3 ring-1 ring-black/5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
           alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
         />
         {product.badge && (
           <span className="absolute left-3 top-3 rounded-full bg-bottle-900 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
