@@ -46,7 +46,7 @@ export default function ContactPage() {
               <div className="mt-6 space-y-5">
                 {[
                   { l: "Email", v: "hello@maison.store" },
-                  { l: "Phone / WhatsApp", v: "+880 1XXX-XXXXXX" },
+                  { l: "Phone", v: "01337303324" },
                   { l: "Hours", v: "Sat–Thu, 10am – 8pm" },
                 ].map((c) => (
                   <div key={c.l} className="border-l-2 border-bottle-500 pl-4">

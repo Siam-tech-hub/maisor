@@ -5,9 +5,6 @@ import { useCart } from "@/components/CartProvider";
 import { formatPrice } from "@/lib/products";
 import Link from "next/link";
 
-// 👇 Orders are sent to this WhatsApp number (country code, no +, no spaces)
-const WHATSAPP_NUMBER = "8801337303324";
-
 // 👇 Web3Forms access key — order emails go to siamhossai5599@gmail.com
 //    Get it at https://web3forms.com (enter your email, key arrives by email)
 const WEB3FORMS_ACCESS_KEY = "67b975da-a7b9-40b8-b643-94b59e2002c2";
@@ -42,16 +39,7 @@ export default function CheckoutPage() {
 
     const orderId = "MAI-" + Date.now().toString().slice(-6);
 
-    const lines = items
-      .map(
-        (i) =>
-          `• ${i.name} (Size ${i.size}) ×${i.qty} — ${formatPrice(
-            i.price * i.qty
-          )}`
-      )
-      .join("\n");
-
-    // ---- Email notification via Web3Forms ----
+    // ---- Build order details for the email ----
     const emailBody = items
       .map(
         (i) =>
@@ -61,6 +49,7 @@ export default function CheckoutPage() {
       )
       .join("\n");
 
+    // ---- Send email notification to siamhossai5599@gmail.com ----
     try {
       await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -86,29 +75,8 @@ export default function CheckoutPage() {
         }),
       });
     } catch (err) {
-      // Email failed — order still goes through via WhatsApp
       console.error("Email send failed", err);
     }
-
-    // ---- WhatsApp notification ----
-    const message =
-      `*New Maison Order ${orderId}*\n\n` +
-      `${lines}\n\n` +
-      `Subtotal: ${formatPrice(subtotal)}\n` +
-      `Delivery: ${shipping === 0 ? "FREE" : formatPrice(shipping)}\n` +
-      `Total: ${formatPrice(total)}\n\n` +
-      `*Customer*\n` +
-      `Name: ${form.name}\n` +
-      `Phone: ${form.phone}\n` +
-      `Address: ${form.address}\n` +
-      `Area: ${form.city}\n` +
-      `Payment: ${form.payment}\n` +
-      (form.note ? `Note: ${form.note}\n` : "");
-
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(url, "_blank");
 
     setSending(false);
     setPlaced(true);
@@ -124,9 +92,8 @@ export default function CheckoutPage() {
         </div>
         <h1 className="mt-6 text-3xl font-bold">Order placed!</h1>
         <p className="mt-4 leading-relaxed text-ink/60">
-          We&apos;ve received your order and sent the details to our team via
-          email. WhatsApp also opened with your order — if it didn&apos;t, no
-          worries, we&apos;ll confirm with you shortly.
+          Thank you for your order. We&apos;ve received your details and our team
+          will contact you shortly to confirm.
         </p>
         <Link
           href="/shop"
@@ -230,8 +197,8 @@ export default function CheckoutPage() {
             </div>
             {form.payment !== "COD" && (
               <p className="mt-3 rounded-lg bg-bottle-50 px-4 py-3 text-xs text-bottle-800">
-                You selected <strong>{form.payment}</strong>. We&apos;ll share
-                payment instructions via WhatsApp after you place the order.
+                You selected <strong>{form.payment}</strong>. We&apos;ll send
+                you the payment instructions after you place the order.
               </p>
             )}
 
