@@ -13,28 +13,28 @@ export default function Home() {
       {/* HERO */}
       <section className="relative">
         <div className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-bottle-950">
-          <Image
-            src="/images/hero-banner.jpg"
-            alt="Maison collection"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+                <Image
+                  src="/images/panjabi-1-1.jpg"
+                  alt="Maisor collection"
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-center"
+                />
           <div className="absolute inset-0 bg-gradient-to-r from-bottle-950/85 via-bottle-950/40 to-transparent" />
           <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-xl">
               <p className="text-xs uppercase tracking-[0.35em] text-bottle-200">
-                Emerald Season · 2026
+                Festive Collection · 2026
               </p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.05] text-white sm:text-6xl">
-                Modern essentials,
+                Premium Panjabis,
                 <br />
                 <span className="text-bottle-300">redefined.</span>
               </h1>
               <p className="mt-6 max-w-md text-base leading-relaxed text-white/70">
-                Premium clothing in bottle green, white & black. Crafted with
-                intention, designed for everyday life.
+                Designer & classic panjabis crafted with premium fabric.
+                Elegant, comfortable, and perfect for every occasion.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -64,7 +64,7 @@ export default function Home() {
                 <div className="relative aspect-square md:aspect-auto md:min-h-[460px]">
                   <Image
                     src="/images/maisor-feature.jpg"
-                    alt="Maison"
+                    alt="Maisor"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
@@ -72,14 +72,14 @@ export default function Home() {
                 </div>
                 <div className="p-10 sm:p-14 text-white">
                   <p className="text-xs uppercase tracking-[0.35em] text-bottle-300">
-                    The Maison Edit
+                    The Maisor Edit
                   </p>
                   <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
                     Wear the<br />moment.
                   </h2>
                   <p className="mt-5 max-w-md leading-relaxed text-white/70">
-                    Designed in our signature matte bottle green, crisp white &
-                    deep black — every piece made to be lived in.
+                    Designed in our signature matte bottle green — premium
+                    panjabis made for elegance and comfort.
                   </p>
                   <Link
                     href="/shop"
@@ -129,7 +129,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2 lg:px-8">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-bottle-300">
-              The Maison Standard
+              The Maisor Standard
             </p>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
               Built around three colors.
@@ -137,9 +137,9 @@ export default function Home() {
               Zero compromise.
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-white/70">
-              Every piece is designed in a disciplined palette of bottle green,
-              crisp white, and deep black — so everything you own works together.
-              Premium fabrics, honest pricing, made to last.
+              Every panjabi is crafted from premium fabric with a focus on
+              comfort, fit, and finish. Honest pricing, made to last — for
+              everyday elegance and special occasions alike.
             </p>
             <Link
               href="/about"
@@ -151,8 +151,8 @@ export default function Home() {
           <Reveal delay={120}>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { k: "100%", v: "Premium cotton" },
-                { k: "3", v: "Core colors" },
+                { k: "100%", v: "Premium fabric" },
+                { k: "5", v: "Curated designs" },
                 { k: "COD", v: "All of Bangladesh" },
                 { k: "48h", v: "Fast dispatch" },
               ].map((s) => (
@@ -176,8 +176,8 @@ export default function Home() {
             <div className="grid items-center gap-0 md:grid-cols-2">
               <div className="relative aspect-square md:aspect-auto md:h-full md:min-h-[440px]">
                 <Image
-                  src="/images/green-hoodie.jpg"
-                  alt="Bottle Green Hoodie"
+                  src="/images/panjabi-2-1.jpg"
+                  alt="Premium Panjabi"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -187,21 +187,21 @@ export default function Home() {
                 <span className="rounded-full bg-bottle-900 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
                   Bestseller
                 </span>
-                <h2 className="mt-5 text-3xl font-bold">Bottle Green Hoodie</h2>
+                <h2 className="mt-5 text-3xl font-bold">Premium Panjabi</h2>
                 <p className="mt-4 leading-relaxed text-ink/70">
-                  Our most-loved piece. Heavyweight 400 GSM brushed fleece in
-                  deep bottle green — soft, structured, and made to be lived in.
+                  Our most luxurious panjabi. Rich fabric with an elegant drape
+                  — designed to make a statement at any occasion.
                 </p>
                 <div className="mt-6 flex items-baseline gap-3">
                   <span className="text-2xl font-bold">
-                    {formatPrice(2490)}
+                    {formatPrice(2000)}
                   </span>
                   <span className="text-sm text-ink/40 line-through">
-                    {formatPrice(2990)}
+                    {formatPrice(2400)}
                   </span>
                 </div>
                 <Link
-                  href="/product/bottle-green-hoodie"
+                  href="/product/premium-panjabi"
                   className="mt-8 inline-block rounded-full bg-bottle-900 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-bottle-700"
                 >
                   Shop Now

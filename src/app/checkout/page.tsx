@@ -59,8 +59,8 @@ export default function CheckoutPage() {
         },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `🛍️ New Maison Order ${orderId} — ${formatPrice(total)}`,
-          from_name: "Maison Store",
+          subject: `🛍️ New Maisor Order ${orderId} — ${formatPrice(total)}`,
+          from_name: "Maisor Store",
           name: form.name,
           phone: form.phone,
           address: form.address,

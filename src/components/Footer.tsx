@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-4 lg:px-8">
         {/* Brand */}
         <div className="md:col-span-2">
-          <h3 className="text-2xl font-bold uppercase tracking-[0.3em]">Maison</h3>
+          <h3 className="text-2xl font-bold uppercase tracking-[0.3em]">Maisor</h3>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
             Modern essentials in bottle green, white & black. Designed for
             everyday wear, built to last.
@@ -58,7 +58,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-white/40 sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} Maison. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Maisor. All rights reserved.</p>
           <p>Cash on delivery · bKash · Nagad</p>
         </div>
       </div>

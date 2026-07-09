@@ -14,11 +14,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Maison — Modern Essentials",
-    template: "%s | Maison",
+    default: "Maisor — Modern Essentials",
+    template: "%s | Maisor",
   },
   description:
-    "Maison is a modern clothing brand. Premium tees, shirts, hoodies & jackets in bottle green, white & black.",
+    "Maisor — premium Panjabi collection. Designer, premium & classic panjabis for every occasion.",
 };
 
 export default function RootLayout({

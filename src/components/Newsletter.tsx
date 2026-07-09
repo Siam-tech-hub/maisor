@@ -7,7 +7,7 @@ export default function Newsletter() {
 
   return (
     <div className="rounded-3xl border border-black/10 bg-white p-10 text-center sm:p-16">
-      <h2 className="text-2xl font-bold sm:text-3xl">Join the Maison list</h2>
+      <h2 className="text-2xl font-bold sm:text-3xl">Join the Maisor list</h2>
       <p className="mx-auto mt-3 max-w-md text-ink/60">
         Be first to know about new drops, restocks, and members-only offers.
       </p>

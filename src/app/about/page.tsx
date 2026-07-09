@@ -12,7 +12,7 @@ export default function AboutPage() {
             Our Story
           </p>
           <h1 className="mt-3 max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">
-            A modern clothing brand built on restraint.
+            Premium panjabis, crafted with care.
           </h1>
         </div>
       </section>
@@ -21,27 +21,25 @@ export default function AboutPage() {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-              <Image
-                src="/images/black-shirt.jpg"
-                alt="Maison craftsmanship"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
+                <Image
+                  src="/images/panjabi-3-1.jpg"
+                  alt="Maisor craftsmanship"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-3xl font-bold">Three colors. Done right.</h2>
+            <h2 className="text-3xl font-bold">Premium fabric. Done right.</h2>
             <p className="mt-5 leading-relaxed text-ink/70">
-              Maison was founded on a simple idea: a wardrobe should be
-              effortless. We design every piece in a disciplined palette of
-              bottle green, white, and black — so everything mixes, matches, and
-              just works.
+              Maisor was founded on a simple idea: a great panjabi should feel
+              as good as it looks. We craft every piece from premium fabric with
+              a focus on comfort, fit, and timeless elegance.
             </p>
             <p className="mt-4 leading-relaxed text-ink/70">
-              No fast-fashion noise. Just premium fabrics, honest pricing, and
-              silhouettes built to outlast trends. From heavyweight tees to
-              structured hoodies, each piece is made to be worn again and again.
+              No compromises on quality. Just premium fabrics, honest pricing,
+              and designs made for everyday wear and special occasions alike.
             </p>
           </Reveal>
         </div>
@@ -51,15 +49,15 @@ export default function AboutPage() {
           {[
             {
               t: "Premium Fabric",
-              d: "Heavyweight cottons and brushed fleece, chosen for feel and durability.",
+              d: "Hand-picked fabrics chosen for comfort, drape, and durability.",
             },
             {
               t: "Honest Pricing",
-              d: "No middlemen markups. Direct-to-you pricing on every piece.",
+              d: "No middlemen markups. Direct-to-you pricing on every panjabi.",
             },
             {
               t: "Made to Last",
-              d: "Reinforced seams and pre-shrunk fabric, so it keeps its shape.",
+              d: "Fine stitching and quality finish, so it wears beautifully.",
             },
           ].map((v, i) => (
             <Reveal key={v.t} delay={i * 80}>
