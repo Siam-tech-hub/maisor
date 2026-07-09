@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Bottle green brand scale */
+  --color-bottle-50: #eefaf2;
+  --color-bottle-100: #d3f3df;
+  --color-bottle-200: #abe6c1;
+  --color-bottle-300: #72d29d;
+  --color-bottle-400: #3fb677;
+  --color-bottle-500: #1f9a5a;
+  --color-bottle-600: #137a47;
+  --color-bottle-700: #0f6039;
+  --color-bottle-800: #0d4c30;
+  --color-bottle-900: #0b3d2e;
+  --color-bottle-950: #052419;
+
+  --color-ink: #0a0a0a;
+  --color-cream: #faf9f6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Reveal-on-scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Marquee for announcement bar */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
+/* Hide scrollbar utility (for horizontal scrollers) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
