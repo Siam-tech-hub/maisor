@@ -27,7 +27,7 @@ export default function Header() {
               {[
                 "Free delivery over ৳3000",
                 "Cash on delivery available",
-                "New collection — Emerald Season",
+                "New collection — Festive Season",
                 "Easy size exchange",
               ].map((t, i) => (
                 <span key={i} className="mx-8 flex items-center gap-8">
