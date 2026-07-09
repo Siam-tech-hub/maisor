@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { PRODUCTS, CATEGORIES, formatPrice } from "@/lib/products";
+import { PRODUCTS, formatPrice } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import Newsletter from "@/components/Newsletter";
@@ -55,21 +55,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CATEGORY STRIP */}
+      {/* BRAND FEATURE IMAGE */}
       <section className="border-b border-black/5">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs uppercase tracking-[0.2em] text-ink/50">
-            <span className="text-bottle-700">Shop by category</span>
-            {CATEGORIES.map((c) => (
-              <Link
-                key={c.id}
-                href={`/shop?category=${c.id}`}
-                className="transition-colors hover:text-bottle-700"
-              >
-                {c.label}
-              </Link>
-            ))}
-          </div>
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-bottle-900">
+              <div className="grid items-center md:grid-cols-2">
+                <div className="relative aspect-square md:aspect-auto md:min-h-[460px]">
+                  <Image
+                    src="/images/maisor-feature.jpg"
+                    alt="Maison"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-10 sm:p-14 text-white">
+                  <p className="text-xs uppercase tracking-[0.35em] text-bottle-300">
+                    The Maison Edit
+                  </p>
+                  <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+                    Wear the<br />moment.
+                  </h2>
+                  <p className="mt-5 max-w-md leading-relaxed text-white/70">
+                    Designed in our signature matte bottle green, crisp white &
+                    deep black — every piece made to be lived in.
+                  </p>
+                  <Link
+                    href="/shop"
+                    className="mt-8 inline-block rounded-full bg-white px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-bottle-300"
+                  >
+                    Explore Collection
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

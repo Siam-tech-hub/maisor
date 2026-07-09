@@ -15,13 +15,8 @@ export interface Product {
   featured?: boolean;
 }
 
-export const CATEGORIES: { id: Category; label: string }[] = [
-  { id: "tees", label: "Tees" },
-  { id: "shirts", label: "Shirts" },
-  { id: "hoodies", label: "Hoodies" },
-  { id: "jackets", label: "Jackets" },
-  { id: "pants", label: "Pants" },
-];
+// Categories have been cleared. Tell us which ones to add.
+export const CATEGORIES: { id: Category; label: string }[] = [];
 
 export const PRODUCTS: Product[] = [
   {

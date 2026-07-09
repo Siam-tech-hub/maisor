@@ -34,34 +34,36 @@ export default async function Shop({
         </div>
       </section>
 
-      {/* Filter bar */}
-      <div className="sticky top-16 z-30 border-b border-black/5 bg-cream/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-4 no-scrollbar sm:px-6 lg:px-8">
-          <Link
-            href="/shop"
-            className={`shrink-0 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
-              !active
-                ? "bg-bottle-900 text-white"
-                : "border border-black/15 text-ink/60 hover:border-bottle-500"
-            }`}
-          >
-            All
-          </Link>
-          {CATEGORIES.map((c) => (
+      {/* Filter bar (only shows when categories exist) */}
+      {CATEGORIES.length > 0 && (
+        <div className="sticky top-16 z-30 border-b border-black/5 bg-cream/85 backdrop-blur-md">
+          <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-4 no-scrollbar sm:px-6 lg:px-8">
             <Link
-              key={c.id}
-              href={`/shop?category=${c.id}`}
+              href="/shop"
               className={`shrink-0 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
-                active === c.id
+                !active
                   ? "bg-bottle-900 text-white"
                   : "border border-black/15 text-ink/60 hover:border-bottle-500"
               }`}
             >
-              {c.label}
+              All
             </Link>
-          ))}
+            {CATEGORIES.map((c) => (
+              <Link
+                key={c.id}
+                href={`/shop?category=${c.id}`}
+                className={`shrink-0 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
+                  active === c.id
+                    ? "bg-bottle-900 text-white"
+                    : "border border-black/15 text-ink/60 hover:border-bottle-500"
+                }`}
+              >
+                {c.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Grid */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
