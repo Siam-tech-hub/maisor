@@ -1,4 +1,4 @@
-export type Category = "panjabi";
+export type Category = "panjabi" | "tshirt";
 
 export interface Product {
   id: string;
@@ -17,6 +17,7 @@ export interface Product {
 
 export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "panjabi", label: "Panjabi" },
+  { id: "tshirt", label: "T-Shirt" },
 ];
 
 export const PRODUCTS: Product[] = [
@@ -119,6 +120,26 @@ export const PRODUCTS: Product[] = [
       "Excellent value",
     ],
     sizes: ["38", "40", "42", "44"],
+    featured: true,
+  },
+  {
+    id: "6",
+    name: "Drop Shoulder T-Shirt",
+    slug: "drop-shoulder-t-shirt",
+    price: 650,
+    category: "tshirt",
+    image: "/images/hero-main.jpg",
+    images: ["/images/hero-main.jpg", "/images/hero-panjabi.jpg"],
+    description:
+      "Premium drop shoulder t-shirt - relaxed fit, soft breathable fabric, perfect for everyday streetwear. Minimal, comfortable, and effortlessly stylish.",
+    details: [
+      "Premium 180 GSM cotton",
+      "Drop shoulder relaxed fit",
+      "Soft & breathable fabric",
+      "Durable stitching",
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    badge: "New",
     featured: true,
   },
 ];

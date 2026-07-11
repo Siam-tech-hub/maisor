@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PRODUCTS, CATEGORIES, Category } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
@@ -16,10 +17,24 @@ export default async function Shop({
 
   return (
     <>
-      {/* Header */}
-      <section className="bg-bottle-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <p className="text-xs uppercase tracking-[0.3em] text-bottle-300">
+      {/* Header with hero image background */}
+      <section className="relative overflow-hidden bg-bottle-900 text-white">
+        {/* Hero background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-main.jpg"
+            alt="Maisor Collection"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top"
+          />
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">
             Collection
           </p>
           <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
@@ -29,7 +44,7 @@ export default async function Shop({
           </h1>
           <p className="mt-4 max-w-md text-white/70">
             {products.length} {products.length === 1 ? "piece" : "pieces"} —
-            bottle green, white & black.
+            curated for everyday elegance.
           </p>
         </div>
       </section>
