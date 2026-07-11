@@ -128,8 +128,8 @@ export const PRODUCTS: Product[] = [
     slug: "drop-shoulder-t-shirt",
     price: 650,
     category: "tshirt",
-    image: "/images/hero-main.jpg",
-    images: ["/images/hero-main.jpg", "/images/hero-panjabi.jpg"],
+    image: "/images/tshirt-1-1.jpg",
+    images: ["/images/tshirt-1-1.jpg", "/images/tshirt-1-2.jpg"],
     description:
       "Premium drop shoulder t-shirt - relaxed fit, soft breathable fabric, perfect for everyday streetwear. Minimal, comfortable, and effortlessly stylish.",
     details: [
